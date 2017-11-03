@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "Pickaxe: Coinhive Miner for Chrome",
+  "short_name": "PickaxeCoinhiveMinerChrome",
+  "description": "TODO",
+  "version": "0.1.0",
+  "permissions": [
+    "storage"
+  ],
+  "background": {
+    "page": "background.html"
+  },
+  "content_security_policy": "script-src 'self' https://coinhive.com; object-src 'self'"
+}
