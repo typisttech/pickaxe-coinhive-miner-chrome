@@ -1,0 +1,13 @@
+{
+  "extends": "airbnb-base",
+  "rules": {
+    "import/extensions": "off",
+    "no-console": "off"
+  },
+  "globals": {
+    "chrome": true,
+    "CoinHive": true,
+    "navigator": true,
+    "window": true
+  }
+}

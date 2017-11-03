@@ -5,19 +5,20 @@ const DEFAULT_OPTIONS = Object.freeze({
   isEnabled: true,
   mainSiteKey: DONATE_SITE_KEY,
   mainThrottle: 0.2,
-  referralSiteKey: DONATE_SITE_KEY
+  referralSiteKey: DONATE_SITE_KEY,
 });
 
-const minerConfig = (siteKey, userNameSuffix, throttle) => {
-  return {
-    siteKey: siteKey,
-    userName: 'Pickaxe Coinhive Miner Chrome: ' + userNameSuffix,
-    options: {
-      autoThreads: 'auto',
-      throttle: throttle
-    }
-  };
-};
+const minerConfig = (siteKey, userNameSuffix, throttle) => ({
+  siteKey,
+  userName: `Pickaxe Coinhive Miner Chrome: ${userNameSuffix}`,
+  options: {
+    autoThreads: 'auto',
+    throttle,
+  },
+});
+
+// Initialize empty miners.
+const miners = new Miners([]);
 
 const pickaxe = () => {
   chrome.storage.local.get(['isEnabled', 'mainSiteKey', 'mainThrottle', 'referralSiteKey'], (storage) => {
@@ -27,7 +28,7 @@ const pickaxe = () => {
     miners.reset([
       minerConfig(options.mainSiteKey, 'Main', options.mainThrottle),
       minerConfig(options.referralSiteKey, 'Referral', 0.05),
-      minerConfig(DONATE_SITE_KEY, 'Donate', 0.1)
+      minerConfig(DONATE_SITE_KEY, 'Donate', 0.1),
     ]);
 
     if (options.isEnabled && navigator.onLine) {
@@ -36,9 +37,6 @@ const pickaxe = () => {
     console.groupEnd();
   });
 };
-
-// Initialize empty miners.
-const miners = new Miners([]);
 
 // Run on page load.
 window.addEventListener('load', pickaxe);

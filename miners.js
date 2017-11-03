@@ -1,7 +1,7 @@
 export default class {
   constructor(configs) {
     console.group('Miners: init');
-    this._miners = [];
+    this.miners = [];
     this.reset(configs);
     console.groupEnd();
   }
@@ -10,19 +10,19 @@ export default class {
     console.group('Miners: reset');
     this.stop();
 
-    this._miners = [];
-    configs.forEach(function(config) {
-      const miner =  new CoinHive.User(config.siteKey, config.userName, config.options);
-      this._miners.push(miner);
+    this.miners = [];
+    configs.forEach((config) => {
+      const miner = new CoinHive.User(config.siteKey, config.userName, config.options);
+      this.miners.push(miner);
     }, this);
 
-    console.debug('Miners: ', this._miners);
+    console.debug('Miners: ', this.miners);
     console.groupEnd();
   }
 
   start() {
     console.group('Miners: start');
-    this._miners.forEach(function(miner) {
+    this.miners.forEach((miner) => {
       miner.start(CoinHive.FORCE_MULTI_TAB);
     });
     console.groupEnd();
@@ -30,7 +30,7 @@ export default class {
 
   stop() {
     console.group('Miners: stop');
-    this._miners.forEach(function(miner) {
+    this.miners.forEach((miner) => {
       miner.stop();
     });
     console.groupEnd();
