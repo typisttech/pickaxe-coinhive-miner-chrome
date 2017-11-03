@@ -4,6 +4,7 @@
   "short_name": "PickaxeCoinhiveMinerChrome",
   "description": "TODO",
   "version": "0.1.0",
+  "minimum_chrome_version": "61",
   "permissions": [
     "storage"
   ],
