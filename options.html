@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Pickaxe: Coinhive Miner for Chrome</title>
+
+  <link href="./bootstrap.css" rel="stylesheet">
+  <link href="./options.css" rel="stylesheet">
+  <script src="./options.js" type="module"></script>
+</head>
+
+<body>
+  <div class="container-fluid">
+
+    <div class="row justify-content-center">
+      <div class="col-sm-8">
+        <div class="text-center">
+          <h1>Pickaxe: Coinhive Miner for Chrome</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <div class="card bg-light">
+          <h2 class="card-header h3">Settings</h2>
+          <div class="card-body">
+            <div class="alert alert-success text-center" id="form-saved-alert">
+              Saved!
+            </div>
+
+            <form class="option-form" id="option-form">
+              <div class="form-group">
+                <label for="mainSiteKey">Main Site Key</label>
+                <input type="text" class="form-control" id="mainSiteKey" aria-describedby="mainSiteKeyHelp" required>
+                <small id="mainSiteKeyHelp" class="form-text text-muted">
+                  Register at <a href="https://cnhv.co/arz1">https://coinhive.com</a>. Then get your Coinhive site key (public) under <a href="https://cnhv.co/arzb">Settings » Sites</a>.
+                </small>
+              </div>
+
+              <div class="form-group">
+                <label for="mainSpeed">Main Miner Speed</label>
+                <select class="custom-select form-control" id="mainSpeed">
+                  <option value="5">5%</option>
+                  <option value="10">10%</option>
+                  <option value="15">15%</option>
+                  <option value="20">20%</option>
+                  <option value="25">25%</option>
+                  <option value="30">30%</option>
+                  <option value="35">35%</option>
+                  <option value="40">40%</option>
+                  <option value="45">45%</option>
+                  <option value="50">50%</option>
+                  <option value="55">55%</option>
+                  <option value="60">60%</option>
+                  <option value="65">65%</option>
+                  <option value="70">70%</option>
+                  <option value="75">75%</option>
+                  <option value="80">80%</option>
+                  <option value="85">85%</option>
+                </select> <small id="mainSpeedHelp" class="form-text text-muted">
+                  Percentage of CPU power allowed for main miner. Higher value means more hash outputs.
+                </small>
+              </div>
+
+              <div class="form-group">
+                <label for="referrerSiteKey">Referrer Site Key</label>
+                <input type="text" class="form-control" id="referrerSiteKey" aria-describedby="referrerSiteKeyHelp" required>
+                <small id="referrerSiteKeyHelp" class="form-text text-muted">
+                  Mine for friendship. Donate a small amount of your CPU power to your friend.
+                  Tell your friend to install <a href="https://cnhv.co/as0d">Pickaxe</a> and earn some extra hashes.
+                </small>
+              </div>
+
+              <button type="submit" class="btn btn-lg btn-primary btn-block">Save</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card bg-light">
+          <h2 class="card-header h3">The MIT License</h2>
+          <div class="card-body">
+            <p class="card-text"> Copyright (c) 2017 The contributors </p>
+
+            <p class="card-text"> Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use,
+              copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: </p>
+
+            <p class="card-text"> The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. </p>
+
+            <p class="card-text"> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+              HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>
