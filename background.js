@@ -6,7 +6,7 @@ import Miners from './miners.js';
 
 const minerConfig = (siteKey, userNameSuffix, speed) => ({
   siteKey,
-  userName: `Pickaxe Coinhive Miner Chrome: ${userNameSuffix}`,
+  userName: `PickaxeCoinhiveChrome: ${userNameSuffix}`,
   options: {
     autoThreads: 'auto',
     throttle: ((100 - speed) / 100),
