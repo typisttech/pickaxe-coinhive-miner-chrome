@@ -32,9 +32,19 @@ const pickaxe = () => {
     ]);
 
     if (options.isEnabled && navigator.onLine) {
+      chrome.browserAction.setIcon({ path: 'icons/icon48.png' });
       miners.start();
+    } else {
+      chrome.browserAction.setIcon({ path: 'icons/icon48-grayscale.png' });
     }
+
     console.groupEnd();
+  });
+};
+
+const toggleIsEnabled = () => {
+  chrome.storage.local.get('isEnabled', (options) => {
+    chrome.storage.local.set({ isEnabled: !options.isEnabled });
   });
 };
 
@@ -45,3 +55,6 @@ window.addEventListener('load', pickaxe);
 chrome.storage.onChanged.addListener(pickaxe);
 window.addEventListener('online', pickaxe);
 window.addEventListener('offline', pickaxe);
+
+// Menu icon clicks.
+chrome.browserAction.onClicked.addListener(toggleIsEnabled);
