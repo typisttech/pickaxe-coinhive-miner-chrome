@@ -13,6 +13,7 @@
   "permissions": [
     "storage"
   ],
+  "options_page": "options.html",
   "background": {
     "page": "background.html"
   },

@@ -1,0 +1,23 @@
+body {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: #eee;
+}
+
+.row {
+  margin-bottom: 2rem;
+}
+
+#form-saved-alert, #miner-disabled-alert {
+  display: none;
+}
+
+#option-form .form-control {
+  padding: 0.8rem;
+  margin-bottom: 0.8rem;
+  font-size: 16px;
+}
+
+#option-form .custom-select {
+    height: auto;
+}
