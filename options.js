@@ -1,6 +1,5 @@
-import {
-  defaultOptions,
-} from './src/Constants.js';
+import donateSiteKey from './src/donateSiteKey.js';
+import Settings from './src/Settings.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('option-form').addEventListener('submit', (evt) => {
@@ -18,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   chrome.storage.local.get(['mainSiteKey', 'mainSpeed', 'referrerSiteKey'], (storage) => {
-    const options = Object.assign({}, defaultOptions, storage);
+    const options = Settings.fromStoreage(storage);
 
     document.getElementById('mainSiteKey').value = options.mainSiteKey;
     document.getElementById('mainSpeed').value = options.mainSpeed;

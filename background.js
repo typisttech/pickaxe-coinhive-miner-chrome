@@ -1,7 +1,5 @@
-import {
-  donateSiteKey,
-  defaultOptions,
-} from './src/Constants.js';
+import donateSiteKey from './src/donateSiteKey.js';
+import Settings from './src/Settings.js';
 import Miners from './src/Miners.js';
 
 const minerConfig = (siteKey, userNameSuffix, speed) => ({
@@ -19,15 +17,15 @@ const miners = new Miners([]);
 const pickaxe = () => {
   chrome.storage.local.get(['isEnabled', 'mainSiteKey', 'mainSpeed', 'referrerSiteKey'], (storage) => {
     console.group('Pickaxe');
-    const options = Object.assign({}, defaultOptions, storage);
+    const settings = Settings.fromStoreage(storage);
 
     miners.reset([
-      minerConfig(options.mainSiteKey, 'Main', options.mainSpeed),
-      minerConfig(options.referrerSiteKey, 'Referrer', 5),
+      minerConfig(settings.mainSiteKey, 'Main', settings.mainSpeed),
+      minerConfig(settings.referrerSiteKey, 'Referrer', 5),
       minerConfig(donateSiteKey, 'Donate', 10),
     ]);
 
-    if (options.isEnabled && navigator.onLine) {
+    if (settings.isEnabled && navigator.onLine) {
       chrome.browserAction.setIcon({
         path: 'icons/icon48.png',
       });
@@ -45,7 +43,7 @@ const pickaxe = () => {
 const toggleIsEnabled = () => {
   chrome.storage.local.get('isEnabled', (options) => {
     chrome.storage.local.set({
-      isEnabled: !options.isEnabled,
+      isEnabled: !settings.isEnabled,
     });
   });
 };
