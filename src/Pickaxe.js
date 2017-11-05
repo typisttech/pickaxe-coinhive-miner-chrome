@@ -30,8 +30,8 @@ export default class Pickaxe {
 
     this.miners.reset([
       MinerConfig.build(settings.mainSiteKey, 'Main', settings.mainSpeed),
-      MinerConfig.build(settings.referrerSiteKey, 'Referrer', 5),
-      MinerConfig.build(settings.donateSiteKey, 'Donate', 10),
+      MinerConfig.build(settings.referrerSiteKey, 'Referrer', settings.referrerSpeed),
+      MinerConfig.build(settings.donateSiteKey, 'Donate', settings.donateSpeed),
     ]);
 
     this.constructor.shouldStart(settings) ? this.start() : this.constructor.stop();

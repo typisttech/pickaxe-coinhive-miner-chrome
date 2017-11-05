@@ -7,13 +7,15 @@ const defaultSettings = Object.freeze({
   referrerSiteKey: donateSiteKey,
 });
 
-const forceSettings = Object.freeze({
-  donateSiteKey: donateSiteKey,
+const forceOverrideSettings = Object.freeze({
+  referrerSpeed: 5,
+  donateSiteKey,
+  donateSpeed: 10,
 });
 
 class Settings {
   static fromStoreage(storage) {
-    return Object.assign({}, defaultSettings, storage, forceSettings);
+    return Object.assign({}, defaultSettings, storage, forceOverrideSettings);
   }
 }
 
