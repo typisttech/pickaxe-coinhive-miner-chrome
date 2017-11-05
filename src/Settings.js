@@ -11,6 +11,6 @@ class Settings {
   static fromStoreage(storage) {
     return Object.assign({}, defaultSettings, storage);
   }
-};
+}
 
 export default Settings;

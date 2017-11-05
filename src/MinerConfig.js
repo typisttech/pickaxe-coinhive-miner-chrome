@@ -7,6 +7,6 @@ export default class MinerConfig {
         autoThreads: 'auto',
         throttle: ((100 - speed) / 100),
       },
-    }
+    };
   }
-};
+}

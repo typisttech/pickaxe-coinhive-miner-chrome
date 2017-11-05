@@ -1,4 +1,3 @@
-import donateSiteKey from './src/donateSiteKey.js';
 import Settings from './src/Settings.js';
 
 document.addEventListener('DOMContentLoaded', () => {
