@@ -1,6 +1,6 @@
 import {
-  DONATE_SITE_KEY,
-  DEFAULT_OPTIONS,
+  donateSiteKey,
+  defaultOptions,
 } from './constants.js';
 import Miners from './miners.js';
 
@@ -19,12 +19,12 @@ const miners = new Miners([]);
 const pickaxe = () => {
   chrome.storage.local.get(['isEnabled', 'mainSiteKey', 'mainSpeed', 'referrerSiteKey'], (storage) => {
     console.group('Pickaxe');
-    const options = Object.assign({}, DEFAULT_OPTIONS, storage);
+    const options = Object.assign({}, defaultOptions, storage);
 
     miners.reset([
       minerConfig(options.mainSiteKey, 'Main', options.mainSpeed),
       minerConfig(options.referrerSiteKey, 'Referrer', 5),
-      minerConfig(DONATE_SITE_KEY, 'Donate', 10),
+      minerConfig(donateSiteKey, 'Donate', 10),
     ]);
 
     if (options.isEnabled && navigator.onLine) {

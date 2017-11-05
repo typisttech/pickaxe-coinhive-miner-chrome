@@ -1,5 +1,5 @@
 import {
-  DEFAULT_OPTIONS,
+  defaultOptions,
 } from './constants.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   chrome.storage.local.get(['mainSiteKey', 'mainSpeed', 'referrerSiteKey'], (storage) => {
-    const options = Object.assign({}, DEFAULT_OPTIONS, storage);
+    const options = Object.assign({}, defaultOptions, storage);
 
     document.getElementById('mainSiteKey').value = options.mainSiteKey;
     document.getElementById('mainSpeed').value = options.mainSpeed;
