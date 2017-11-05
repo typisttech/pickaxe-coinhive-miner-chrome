@@ -19,6 +19,12 @@ export default class Miners {
     console.groupEnd();
   }
 
+  on(eventName, callback) {
+    this.miners.forEach((miner) => {
+      miner.on(eventName, callback);
+    });
+  }
+
   start() {
     console.group('Miners: start');
     this.miners.forEach((miner) => {
@@ -33,5 +39,13 @@ export default class Miners {
       miner.stop();
     });
     console.groupEnd();
+  }
+
+  isRunning() {
+    return this.miners.reduce((anyRunning, miner) => anyRunning || miner.isRunning(), false);
+  }
+
+  getHashesPerSecond() {
+    return this.miners.reduce((sum, miner) => sum + miner.getHashesPerSecond(), 0);
   }
 }
