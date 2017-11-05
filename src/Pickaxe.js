@@ -96,6 +96,7 @@ class Pickaxe {
     if (this.miners.isRunning()) {
       const count = this.getHashesPerSecond();
       text = (count > 9999) ? '>10k' : String(count);
+      text = (count < 1) ? '' : text;
     }
 
     chrome.browserAction.setBadgeText({
