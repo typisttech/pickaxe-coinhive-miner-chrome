@@ -1,8 +1,8 @@
 import {
   donateSiteKey,
   defaultOptions,
-} from './constants.js';
-import Miners from './miners.js';
+} from './src/Constants.js';
+import Miners from './src/Miners.js';
 
 const minerConfig = (siteKey, userNameSuffix, speed) => ({
   siteKey,

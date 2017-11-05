@@ -1,7 +1,9 @@
 {
   "extends": "airbnb-base",
   "rules": {
-    "import/extensions": "off",
+    "import/extensions": ["error", {
+      "js": "always"
+    }],
     "no-console": "off"
   },
   "globals": {

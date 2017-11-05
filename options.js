@@ -1,6 +1,6 @@
 import {
   defaultOptions,
-} from './constants.js';
+} from './src/Constants.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('option-form').addEventListener('submit', (evt) => {
