@@ -34,7 +34,11 @@ export default class Pickaxe {
       MinerConfig.build(settings.donateSiteKey, 'Donate', settings.donateSpeed),
     ]);
 
-    this.constructor.shouldStart(settings) ? this.start() : this.constructor.stop();
+    if (this.constructor.shouldStart(settings)) {
+      this.start();
+    } else {
+      this.constructor.stop();
+    }
 
     console.groupEnd();
   }
