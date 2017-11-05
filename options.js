@@ -15,7 +15,7 @@ const updateFaqValues = () => {
     const settings = Settings.fromStoreage(storage);
 
     ['main', 'referrer', 'donate'].forEach((key) => {
-      document.getElementById(`${key}SiteKeyFaq`).innerHTML = settings[`${key}SiteKey`];
+      document.getElementById(`${key}SiteKeyFaq`).innerHTML = `<code>${settings[`${key}SiteKey`]}</code>`;
       document.getElementById(`${key}SpeedFaq`).innerHTML = `${settings[`${key}Speed`]} %`;
     });
   });

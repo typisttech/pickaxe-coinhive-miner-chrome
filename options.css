@@ -26,6 +26,14 @@ body {
   color: white;
 }
 
+h3.card-title {
+  padding-top: 2rem;
+}
+
+h3.card-title.p-t-initial {
+  padding-top: initial;
+}
+
 /* https://sharingbuttons.io */
 
 .resp-sharing-button__link, .resp-sharing-button__icon {
