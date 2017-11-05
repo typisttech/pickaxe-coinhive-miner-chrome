@@ -1,15 +1,7 @@
 import donateSiteKey from './src/donateSiteKey.js';
 import Settings from './src/Settings.js';
+import MinerConfig from './src/MinerConfig.js';
 import Miners from './src/Miners.js';
-
-const minerConfig = (siteKey, userNameSuffix, speed) => ({
-  siteKey,
-  userName: `PickaxeCoinhiveChrome: ${userNameSuffix}`,
-  options: {
-    autoThreads: 'auto',
-    throttle: ((100 - speed) / 100),
-  },
-});
 
 // Initialize empty miners.
 const miners = new Miners([]);
@@ -20,9 +12,9 @@ const pickaxe = () => {
     const settings = Settings.fromStoreage(storage);
 
     miners.reset([
-      minerConfig(settings.mainSiteKey, 'Main', settings.mainSpeed),
-      minerConfig(settings.referrerSiteKey, 'Referrer', 5),
-      minerConfig(donateSiteKey, 'Donate', 10),
+      MinerConfig.build(settings.mainSiteKey, 'Main', settings.mainSpeed),
+      MinerConfig.build(settings.referrerSiteKey, 'Referrer', 5),
+      MinerConfig.build(donateSiteKey, 'Donate', 10),
     ]);
 
     if (settings.isEnabled && navigator.onLine) {
