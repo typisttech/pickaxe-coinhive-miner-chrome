@@ -1,8 +1,20 @@
 # Change Log
 
-## [0.1.0](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/tree/0.1.0) (2017-11-05)
+## [0.2.0](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/tree/0.2.0) (2017-11-06)
+[Full Changelog](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/compare/0.1.0...0.2.0)
+
 **Merged pull requests:**
 
+- Update options page [\#8](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/8) ([TangRufus](https://github.com/TangRufus))
+- Add version number to Coinhive username [\#7](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/7) ([TangRufus](https://github.com/TangRufus))
+- Show options page on install and update [\#6](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/6) ([TangRufus](https://github.com/TangRufus))
+- Show hash rate on badge [\#5](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/5) ([TangRufus](https://github.com/TangRufus))
+- Refactor [\#4](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/4) ([TangRufus](https://github.com/TangRufus))
+
+## [0.1.0](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/tree/0.1.0) (2017-11-04)
+**Merged pull requests:**
+
+- Version bump 0.1.0 [\#3](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/3) ([TangRufus](https://github.com/TangRufus))
 - First release [\#2](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/2) ([TangRufus](https://github.com/TangRufus))
 - Create CODE\_OF\_CONDUCT.md [\#1](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/1) ([TangRufus](https://github.com/TangRufus))
 
