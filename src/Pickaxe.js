@@ -2,7 +2,21 @@ import Settings from './Settings.js';
 import MinerConfig from './MinerConfig.js';
 import Miners from './Miners.js';
 
-export default class Pickaxe {
+const iconPaths = Object.freeze({
+  16: 'icons/icon16.png',
+  32: 'icons/icon32.png',
+  48: 'icons/icon48.png',
+  128: 'icons/icon128.png',
+});
+
+const grayscaleIconPaths = Object.freeze({
+  16: 'icons/icon16-grayscale.png',
+  32: 'icons/icon32-grayscale.png',
+  48: 'icons/icon48-grayscale.png',
+  128: 'icons/icon128-grayscale.png',
+});
+
+class Pickaxe {
   constructor() {
     this.miners = new Miners();
   }
@@ -34,39 +48,64 @@ export default class Pickaxe {
       MinerConfig.build(settings.donateSiteKey, 'Donate', settings.donateSpeed),
     ]);
 
-    if (this.constructor.shouldStart(settings)) {
-      this.start();
+    this.miners.on('open', () => this.showColoredBadgeIcon());
+    this.miners.on('authed', () => this.showColoredBadgeIcon());
+
+    this.miners.on('found', () => this.updateBadgeText());
+
+    this.miners.on('error', () => this.updateBadgeIcon());
+    this.miners.on('error', () => this.updateBadgeText());
+
+    this.miners.on('close', () => this.updateBadgeIcon());
+    this.miners.on('close', () => this.updateBadgeText());
+
+    if (settings.isEnabled && navigator.onLine) {
+      this.miners.start();
+      this.showColoredBadgeIcon();
     } else {
-      this.constructor.stop();
+      this.miners.stop();
+      this.showGrayscaleBadgeIcon();
     }
 
+    this.updateBadgeText();
     console.groupEnd();
   }
 
-  static shouldStart(settings) {
-    return (settings.isEnabled && navigator.onLine);
+  updateBadgeIcon() {
+    if (this.miners.isRunning()) {
+      this.showColoredBadgeIcon();
+    } else {
+      this.showGrayscaleBadgeIcon();
+    }
   }
 
-  start() {
+  showGrayscaleBadgeIcon() {
     chrome.browserAction.setIcon({
-      path: {
-        16: 'icons/icon16.png',
-        32: 'icons/icon32.png',
-        48: 'icons/icon48.png',
-        128: 'icons/icon128.png',
-      },
+      path: grayscaleIconPaths,
     });
-    this.miners.start();
   }
 
-  static stop() {
+  showColoredBadgeIcon() {
     chrome.browserAction.setIcon({
-      path: {
-        16: 'icons/icon16-grayscale.png',
-        32: 'icons/icon32-grayscale.png',
-        48: 'icons/icon48-grayscale.png',
-        128: 'icons/icon128-grayscale.png',
-      },
+      path: iconPaths,
     });
+  }
+
+  updateBadgeText() {
+    let text = '';
+    if (this.miners.isRunning()) {
+      const count = this.getHashesPerSecond();
+      text = (count > 9999) ? '>10k' : String(count);
+    }
+
+    chrome.browserAction.setBadgeText({
+      text,
+    });
+  }
+
+  getHashesPerSecond() {
+    return Math.round(Number(this.miners.getHashesPerSecond()));
   }
 }
+
+export default Pickaxe;
