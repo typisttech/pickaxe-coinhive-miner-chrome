@@ -12,3 +12,5 @@ window.addEventListener('offline', () => pickaxe.run());
 
 // Menu icon clicks.
 chrome.browserAction.onClicked.addListener(() => pickaxe.constructor.toggle());
+
+chrome.runtime.onInstalled.addListener(() => chrome.runtime.openOptionsPage());
