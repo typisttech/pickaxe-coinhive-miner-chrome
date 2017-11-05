@@ -1,5 +1,19 @@
 import Settings from './src/Settings.js';
 
+const updateFaq = () => {
+  chrome.storage.local.get(['mainSiteKey', 'mainSpeed', 'referrerSiteKey'], (storage) => {
+    const settings = Settings.fromStoreage(storage);
+
+    ['main', 'referrer', 'donate'].forEach((key) => {
+      document.getElementById(key + 'SiteKeyFaq').innerHTML = settings[key + 'SiteKey'];
+      document.getElementById(key + 'SpeedFaq').innerHTML = settings[key + 'Speed'] + ' %';
+    });
+  });
+}
+
+chrome.storage.onChanged.addListener(updateFaq);
+document.addEventListener('DOMContentLoaded', updateFaq);
+
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('option-form').addEventListener('submit', (evt) => {
     evt.preventDefault();
