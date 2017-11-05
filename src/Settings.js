@@ -1,4 +1,4 @@
-import donateSiteKey from './donateSiteKey.js';
+const donateSiteKey = 'I2z6pueJaeVCz5dh1uA8cru5Fl108DtH';
 
 const defaultSettings = Object.freeze({
   isEnabled: true,
@@ -7,9 +7,13 @@ const defaultSettings = Object.freeze({
   referrerSiteKey: donateSiteKey,
 });
 
+const forceSettings = Object.freeze({
+  donateSiteKey: donateSiteKey,
+});
+
 class Settings {
   static fromStoreage(storage) {
-    return Object.assign({}, defaultSettings, storage);
+    return Object.assign({}, defaultSettings, storage, forceSettings);
   }
 }
 
