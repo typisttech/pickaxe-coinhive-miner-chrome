@@ -1,4 +1,4 @@
-const version = chrome.runtime.getManifest().version;
+const { version } = chrome.runtime.getManifest();
 
 class MinerConfig {
   static build(siteKey, userNameSuffix, speed) {
