@@ -1,10 +1,13 @@
-const { version } = chrome.runtime.getManifest();
+const {
+  short_name: shortName,
+  version,
+} = chrome.runtime.getManifest();
 
 class MinerConfig {
   static build(siteKey, userNameSuffix, speed) {
     return {
       siteKey,
-      userName: `PickaxeCoinhiveChrome (${version}): ${userNameSuffix}`,
+      userName: `${shortName} (${version}): ${userNameSuffix}`,
       options: {
         autoThreads: 'auto',
         throttle: ((100 - speed) / 100),
