@@ -1,8 +1,7 @@
-export default class {
-  constructor(configs) {
+export default class Miners {
+  constructor() {
     console.group('Miners: init');
     this.miners = [];
-    this.reset(configs);
     console.groupEnd();
   }
 
