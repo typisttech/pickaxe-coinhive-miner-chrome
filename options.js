@@ -1,22 +1,34 @@
 import Settings from './src/Settings.js';
 
-const updateFaq = () => {
+const updateFormValues = () => {
+  chrome.storage.local.get(['mainSiteKey', 'mainSpeed', 'referrerSiteKey'], (storage) => {
+    const settings = Settings.fromStoreage(storage);
+
+    ['mainSiteKey', 'mainSpeed', 'referrerSiteKey'].forEach((key) => {
+      document.getElementById(key).value = settings[key];
+    });
+  });
+};
+
+const updateFaqValues = () => {
   chrome.storage.local.get(['mainSiteKey', 'mainSpeed', 'referrerSiteKey'], (storage) => {
     const settings = Settings.fromStoreage(storage);
 
     ['main', 'referrer', 'donate'].forEach((key) => {
-      document.getElementById(key + 'SiteKeyFaq').innerHTML = settings[key + 'SiteKey'];
-      document.getElementById(key + 'SpeedFaq').innerHTML = settings[key + 'Speed'] + ' %';
+      document.getElementById(`${key}SiteKeyFaq`).innerHTML = settings[`${key}SiteKey`];
+      document.getElementById(`${key}SpeedFaq`).innerHTML = `${settings[`${key}Speed`]} %`;
     });
   });
-}
+};
 
-chrome.storage.onChanged.addListener(updateFaq);
-document.addEventListener('DOMContentLoaded', updateFaq);
+chrome.storage.onChanged.addListener(updateFormValues);
+document.addEventListener('DOMContentLoaded', updateFormValues);
+chrome.storage.onChanged.addListener(updateFaqValues);
+document.addEventListener('DOMContentLoaded', updateFaqValues);
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('option-form').addEventListener('submit', (evt) => {
-    evt.preventDefault();
+  document.getElementById('option-form').addEventListener('submit', (event) => {
+    event.preventDefault();
 
     const settings = {
       mainSiteKey: document.getElementById('mainSiteKey').value,
@@ -27,13 +39,5 @@ document.addEventListener('DOMContentLoaded', () => {
     chrome.storage.local.set(settings, () => {
       document.getElementById('form-saved-alert').style.display = 'block';
     });
-  });
-
-  chrome.storage.local.get(['mainSiteKey', 'mainSpeed', 'referrerSiteKey'], (storage) => {
-    const settings = Settings.fromStoreage(storage);
-
-    document.getElementById('mainSiteKey').value = settings.mainSiteKey;
-    document.getElementById('mainSpeed').value = settings.mainSpeed;
-    document.getElementById('referrerSiteKey').value = settings.referrerSiteKey;
   });
 });
