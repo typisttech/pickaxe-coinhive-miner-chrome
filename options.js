@@ -5,22 +5,22 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('option-form').addEventListener('submit', (evt) => {
     evt.preventDefault();
 
-    const options = {
+    const settings = {
       mainSiteKey: document.getElementById('mainSiteKey').value,
       mainSpeed: document.getElementById('mainSpeed').value,
       referrerSiteKey: document.getElementById('referrerSiteKey').value,
     };
 
-    chrome.storage.local.set(options, () => {
+    chrome.storage.local.set(settings, () => {
       document.getElementById('form-saved-alert').style.display = 'block';
     });
   });
 
   chrome.storage.local.get(['mainSiteKey', 'mainSpeed', 'referrerSiteKey'], (storage) => {
-    const options = Settings.fromStoreage(storage);
+    const settings = Settings.fromStoreage(storage);
 
-    document.getElementById('mainSiteKey').value = options.mainSiteKey;
-    document.getElementById('mainSpeed').value = options.mainSpeed;
-    document.getElementById('referrerSiteKey').value = options.referrerSiteKey;
+    document.getElementById('mainSiteKey').value = settings.mainSiteKey;
+    document.getElementById('mainSpeed').value = settings.mainSpeed;
+    document.getElementById('referrerSiteKey').value = settings.referrerSiteKey;
   });
 });
