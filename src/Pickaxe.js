@@ -48,8 +48,8 @@ class Pickaxe {
       MinerConfig.build(settings.donateSiteKey, 'Donate', settings.donateSpeed),
     ]);
 
-    this.miners.on('open', () => this.showColoredBadgeIcon());
-    this.miners.on('authed', () => this.showColoredBadgeIcon());
+    this.miners.on('open', () => this.constructor.showColoredBadgeIcon());
+    this.miners.on('authed', () => this.constructor.showColoredBadgeIcon());
 
     this.miners.on('found', () => this.updateBadgeText());
 
