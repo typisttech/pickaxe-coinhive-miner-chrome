@@ -33,7 +33,7 @@ const pickaxe = () => {
 };
 
 const toggleIsEnabled = () => {
-  chrome.storage.local.get('isEnabled', (options) => {
+  chrome.storage.local.get('isEnabled', (settings) => {
     chrome.storage.local.set({
       isEnabled: !settings.isEnabled,
     });
