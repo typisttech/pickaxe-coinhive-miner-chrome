@@ -61,10 +61,10 @@ class Pickaxe {
 
     if (settings.isEnabled && navigator.onLine) {
       this.miners.start();
-      this.showColoredBadgeIcon();
+      this.constructor.showColoredBadgeIcon();
     } else {
       this.miners.stop();
-      this.showGrayscaleBadgeIcon();
+      this.constructor.showGrayscaleBadgeIcon();
     }
 
     this.updateBadgeText();
@@ -73,19 +73,19 @@ class Pickaxe {
 
   updateBadgeIcon() {
     if (this.miners.isRunning()) {
-      this.showColoredBadgeIcon();
+      this.constructor.showColoredBadgeIcon();
     } else {
-      this.showGrayscaleBadgeIcon();
+      this.constructor.showGrayscaleBadgeIcon();
     }
   }
 
-  showGrayscaleBadgeIcon() {
+  static showGrayscaleBadgeIcon() {
     chrome.browserAction.setIcon({
       path: grayscaleIconPaths,
     });
   }
 
-  showColoredBadgeIcon() {
+  static showColoredBadgeIcon() {
     chrome.browserAction.setIcon({
       path: iconPaths,
     });
