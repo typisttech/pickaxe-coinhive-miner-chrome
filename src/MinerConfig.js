@@ -4,13 +4,13 @@ const {
 } = chrome.runtime.getManifest();
 
 class MinerConfig {
-  static build(siteKey, userNameSuffix, speed) {
+  static build(siteKey, userNameSuffix, cpuUsage) {
     return {
       siteKey,
       userName: `${shortName} (${version}): ${userNameSuffix}`,
       options: {
         autoThreads: 'auto',
-        throttle: ((100 - speed) / 100),
+        throttle: ((100 - cpuUsage) / 100),
       },
     };
   }

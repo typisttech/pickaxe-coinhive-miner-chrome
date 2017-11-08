@@ -23,7 +23,7 @@ class Pickaxe {
 
   static toggle() {
     console.group('Pickaxe: toggle');
-    chrome.storage.local.get('isEnabled', (storage) => {
+    chrome.storage.local.get(null, (storage) => {
       const settings = Settings.fromStoreage(storage);
       chrome.storage.local.set({
         isEnabled: !settings.isEnabled,
@@ -40,13 +40,17 @@ class Pickaxe {
 
   reset(storage) {
     console.group('Pickaxe: reset');
-    const settings = Settings.fromStoreage(storage);
+    const {
+      minerConfigs,
+      isEnabled,
+    } = Settings.fromStoreage(storage);
 
-    this.miners.reset([
-      MinerConfig.build(settings.mainSiteKey, 'Main', settings.mainSpeed),
-      MinerConfig.build(settings.referrerSiteKey, 'Referrer', settings.referrerSpeed),
-      MinerConfig.build(settings.donateSiteKey, 'Donate', settings.donateSpeed),
-    ]);
+    const configs = minerConfigs.map(({
+      siteKey,
+      cpuUsage,
+    }) => MinerConfig.build(siteKey, 'TODO', cpuUsage));
+
+    this.miners.reset(configs);
 
     this.miners.on('open', () => this.constructor.showColoredBadgeIcon());
     this.miners.on('authed', () => this.constructor.showColoredBadgeIcon());
@@ -59,7 +63,7 @@ class Pickaxe {
     this.miners.on('close', () => this.updateBadgeIcon());
     this.miners.on('close', () => this.updateBadgeText());
 
-    if (settings.isEnabled && navigator.onLine) {
+    if (isEnabled && navigator.onLine) {
       this.miners.start();
       this.constructor.showColoredBadgeIcon();
     } else {

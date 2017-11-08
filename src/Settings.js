@@ -1,21 +1,23 @@
 const donateSiteKey = 'I2z6pueJaeVCz5dh1uA8cru5Fl108DtH';
 
-const defaultSettings = Object.freeze({
-  isEnabled: true,
-  mainSiteKey: donateSiteKey,
-  mainSpeed: 20,
-  referrerSiteKey: donateSiteKey,
+const donateMinerConfig = Object.freeze({
+  siteKey: donateSiteKey,
+  cpuUsage: 10,
 });
 
-const forceOverrideSettings = Object.freeze({
-  referrerSpeed: 5,
-  donateSiteKey,
-  donateSpeed: 10,
+const defaultSettings = Object.freeze({
+  isEnabled: true,
 });
 
 class Settings {
   static fromStoreage(storage) {
-    return Object.assign({}, defaultSettings, storage, forceOverrideSettings);
+    const tempSettings = Object.assign({}, defaultSettings, storage);
+    tempSettings.minerConfigs = tempSettings.userMinerConfigs.concat(donateMinerConfig);
+    return Object.freeze(tempSettings);
+  }
+
+  static isDonateSiteKey(siteKey) {
+    return donateSiteKey === siteKey;
   }
 }
 
