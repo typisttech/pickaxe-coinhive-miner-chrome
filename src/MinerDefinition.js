@@ -1,22 +1,12 @@
-/* global chrome:true */
-
-const {
-  short_name: shortName,
-  version,
-} = chrome.runtime.getManifest();
-
-class MinerDefinition {
-  constructor(siteKey, userNameSuffix, cpuUsage) {
+export default class MinerDefinition {
+  constructor(siteKey, userName, cpuUsage) {
     this.siteKey = String(siteKey).trim();
-    this.userNameSuffix = String(userNameSuffix).trim();
+    this.userName = String(userName).trim().substring(0, 128);
     this.cpuUsage = Number(cpuUsage);
 
-    this.userName = `${shortName} (${version}): ${userNameSuffix}`;
     this.options = {
       autoThreads: 'auto',
       throttle: ((100 - cpuUsage) / 100),
     };
   }
 }
-
-export default MinerDefinition;

@@ -33,7 +33,7 @@
     </div>
 
     <div class="row justify-content-center">
-      <div class="col-md-6">
+      <div class="col-md-9">
         <div class="card bg-light">
           <h2 class="card-header h3">Miner Settings</h2>
           <div class="card-body">
@@ -45,7 +45,8 @@
               <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th scope="col">Public Site Key</th>
+                    <th scope="col">Site Key (Public)</th>
+                    <th scope="col">User Name <small class="text-muted">(Optional)</small></th>
                     <th scope="col" class="text-center">CPU Usage</th>
                     <th scope="col" class="text-center">Action</th>
                   </tr>
@@ -137,7 +138,7 @@
     </div>
 
     <div class="row justify-content-center">
-      <div class="col-md-6">
+      <div class="col-md-8">
         <div class="card bg-light">
           <h2 class="card-header h3">FAQs</h2>
           <div class="card-body">
@@ -146,7 +147,8 @@
             <table class="table table-striped table-bordered table-hover">
               <thead>
                 <tr>
-                  <th scope="col">Site Key</th>
+                  <th scope="col">Site Key (Public)</th>
+                  <th scope="col">User Name</th>
                   <th scope="col" class="text-center">CPU Usage</th>
                 </tr>
               </thead>
@@ -160,6 +162,17 @@
             <h3 class="card-title">What is my site key?</h3>
             <p class="card-text">
               Register at <a href="https://cnhv.co/arz1">https://coinhive.com</a>. Then, get your Coinhive site key (public) under <a href="https://cnhv.co/arzb">Settings » Sites</a>.
+            </p>
+
+            <h3 class="card-title">What is a user name?</h3>
+            <blockquote class="blockquote">
+              <p class="mb-0 card-text">A unique identifier for the user account on your website. This can be a userId, an email address, the user's nick name or (if you don't want to share your user names with our service) the md5 hash or otherwise obfuscated name of the user.
+                Max length: 128 chars, case insensitive.</p>
+              <footer class="blockquote-footer"><cite title="Source Title"><a href="https://cnhv.co/btzk">Conhive Document</a></cite></footer>
+            </blockquote>
+            <p class="card-text">
+              Optional. Leave blank if you don't need to mine for a specific user. See the <code>CoinHive.Anonymous</code> and <code>CoinHive.User</code>sections on <a href="https://cnhv.co/btzk">Conhive document</a> for
+              details.
             </p>
 
             <h3 class="card-title">What is CPU usage?</h3>
@@ -270,7 +283,7 @@
           <div class="card-body">
             <p class="card-text"> Copyright (c) 2017 The contributors </p>
 
-            <p class="card-text"> Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use,
+            <p class="card-text"> Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated mentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use,
               copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: </p>
 
             <p class="card-text"> The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. </p>

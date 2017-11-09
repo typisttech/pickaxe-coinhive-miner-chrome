@@ -1,5 +1,4 @@
 /* global CoinHive:true */
-
 export default class Miners {
   constructor() {
     console.group('Miners: init');
@@ -12,8 +11,15 @@ export default class Miners {
     this.stop();
 
     this.miners = [];
-    configs.forEach((config) => {
-      const miner = new CoinHive.User(config.siteKey, config.userName, config.options);
+    configs.forEach(({
+      siteKey,
+      userName,
+      options,
+    }) => {
+      const miner = (userName)
+        ? new CoinHive.User(siteKey, userName, options)
+        : new CoinHive.Anonymous(siteKey, options);
+
       this.miners.push(miner);
     }, this);
 
