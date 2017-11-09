@@ -1,5 +1,4 @@
 /* global document:true */
-
 import Settings from './src/Settings.js';
 import Storage from './src/Storage.js';
 
@@ -12,6 +11,7 @@ const siteKeyHelpText = (siteKey) => {
 
 const addRowWithValues = ({
   siteKey,
+  userName,
   cpuUsage,
 }) => {
   const rowHtml = `
@@ -20,8 +20,11 @@ const addRowWithValues = ({
     <code>${siteKey}</code>
     ${siteKeyHelpText(siteKey)}
   </th>
+  <td>
+    ${userName}
+  </td>
   <td class="text-center">
-  ${cpuUsage} %
+    ${cpuUsage} %
   </td>
   </tr>
   `;

@@ -64,7 +64,7 @@ class Pickaxe {
   }
 
   getHashesPerSecond() {
-    return Math.round(Number(this.miners.getHashesPerSecond()));
+    return Math.trunc(this.miners.getHashesPerSecond());
   }
 }
 

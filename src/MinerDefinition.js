@@ -1,22 +1,14 @@
-/* global chrome:true */
+const clamp = (x, lower, upper) => Math.max(lower, Math.min(x, upper));
 
-const {
-  short_name: shortName,
-  version,
-} = chrome.runtime.getManifest();
+export default class MinerDefinition {
+  constructor(siteKey, userName, cpuUsage) {
+    this.siteKey = String(siteKey).trim();
+    this.userName = String(userName).trim().substring(0, 128);
+    this.cpuUsage = clamp(Math.trunc(cpuUsage), 1, 99);
 
-class MinerDefinition {
-  constructor(siteKey, userNameSuffix, cpuUsage) {
-    this.siteKey = siteKey;
-    this.userNameSuffix = userNameSuffix;
-    this.cpuUsage = cpuUsage;
-
-    this.userName = `${shortName} (${version}): ${userNameSuffix}`;
     this.options = {
       autoThreads: 'auto',
       throttle: ((100 - cpuUsage) / 100),
     };
   }
 }
-
-export default MinerDefinition;

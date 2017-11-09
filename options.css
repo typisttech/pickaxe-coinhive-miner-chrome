@@ -4,6 +4,10 @@ body {
   background-color: #eee;
 }
 
+.blockquote {
+  font-size: 1rem;
+}
+
 .row {
   margin-bottom: 2rem;
 }

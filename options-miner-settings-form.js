@@ -1,5 +1,4 @@
 /* global document:true */
-
 import Settings from './src/Settings.js';
 import Storage from './src/Storage.js';
 
@@ -18,9 +17,14 @@ const addRow = () => {
   <tr>
   <th scope="row" class="align-middle">
     <div class="form-group">
-      <input type="text" class="form-control" name="siteKeys[]" aria-describedby="mainSiteKeyHelp" required>
+      <input type="text" class="form-control" name="siteKeys[]" size="32" required>
     </div>
   </th>
+  <td class="align-middle">
+    <div class="form-group">
+      <input type="text" class="form-control" name="userNames[]" size="25" maxlength="128">
+    </div>
+  </td>
   <td class="align-middle">
     <div class="form-group">
       <select class="custom-select form-control" name="cpuUsages[]">
@@ -54,24 +58,29 @@ const addRow = () => {
 
 const getMinerSettingsElements = () => ({
   siteKeys: document.getElementsByName('siteKeys[]'),
+  userNames: document.getElementsByName('userNames[]'),
   cpuUsages: document.getElementsByName('cpuUsages[]'),
 });
 
 const addRowWithValues = ({
   siteKey,
+  userName,
   cpuUsage,
 }) => {
   addRow();
 
   const {
     siteKeys,
+    userNames,
     cpuUsages,
   } = getMinerSettingsElements();
 
   const lastSiteKey = getLast(siteKeys);
+  const lastUserName = getLast(userNames);
   const lastCpuUsage = getLast(cpuUsages);
 
   lastSiteKey.value = siteKey;
+  lastUserName.value = userName;
   lastCpuUsage.value = cpuUsage;
 };
 
@@ -107,14 +116,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const {
       siteKeys,
+      userNames,
       cpuUsages,
     } = getMinerSettingsElements();
 
     const userMinerSettings = [];
     for (let i = 0; i < siteKeys.length; i += 1) {
       userMinerSettings.push({
-        siteKey: siteKeys[i].value,
-        cpuUsage: cpuUsages[i].value,
+        siteKey: siteKeys[i].value.trim(),
+        userName: userNames[i].value.trim().substring(0, 128),
+        cpuUsage: cpuUsages[i].value.trim(),
       });
     }
 
