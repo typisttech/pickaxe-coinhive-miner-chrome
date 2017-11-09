@@ -1,10 +1,30 @@
 # Change Log
 
-## [0.2.0](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/tree/0.2.0) (2017-11-06)
+## [0.3.0](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/tree/0.3.0) (2017-11-10)
+[Full Changelog](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/compare/0.2.0...0.3.0)
+
+**Implemented enhancements:**
+
+- Unlimited miners [\#11](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/issues/11)
+
+**Closed issues:**
+
+- Extract `Storage` class [\#14](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/issues/14)
+- Extract `Badge` class [\#13](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/issues/13)
+
+**Merged pull requests:**
+
+- Allow customizing Coinhive username [\#21](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/21) ([TangRufus](https://github.com/TangRufus))
+- Refactor [\#17](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/17) ([TangRufus](https://github.com/TangRufus))
+- Allow unlimited miners; Remove referreral miner [\#16](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/16) ([TangRufus](https://github.com/TangRufus))
+- Fix Typo: devise --\> device [\#10](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/10) ([TangRufus](https://github.com/TangRufus))
+
+## [0.2.0](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/tree/0.2.0) (2017-11-05)
 [Full Changelog](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/compare/0.1.0...0.2.0)
 
 **Merged pull requests:**
 
+- Version bump 0.2.0 [\#9](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/9) ([TangRufus](https://github.com/TangRufus))
 - Update options page [\#8](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/8) ([TangRufus](https://github.com/TangRufus))
 - Add version number to Coinhive username [\#7](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/7) ([TangRufus](https://github.com/TangRufus))
 - Show options page on install and update [\#6](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/6) ([TangRufus](https://github.com/TangRufus))
