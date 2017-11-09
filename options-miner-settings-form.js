@@ -113,8 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const userMinerSettings = [];
     for (let i = 0; i < siteKeys.length; i += 1) {
       userMinerSettings.push({
-        siteKey: siteKeys[i].value,
-        cpuUsage: cpuUsages[i].value,
+        siteKey: siteKeys[i].value.trim(),
+        cpuUsage: cpuUsages[i].value.trim(),
       });
     }
 
