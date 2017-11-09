@@ -7,9 +7,9 @@ const {
 
 class MinerDefinition {
   constructor(siteKey, userNameSuffix, cpuUsage) {
-    this.siteKey = siteKey;
-    this.userNameSuffix = userNameSuffix;
-    this.cpuUsage = cpuUsage;
+    this.siteKey = String(siteKey).trim();
+    this.userNameSuffix = String(userNameSuffix).trim();
+    this.cpuUsage = Number(cpuUsage);
 
     this.userName = `${shortName} (${version}): ${userNameSuffix}`;
     this.options = {
