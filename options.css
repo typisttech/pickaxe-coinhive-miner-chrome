@@ -12,17 +12,17 @@ body {
   display: none;
 }
 
-#miner-configs-form .form-group {
+#miner-settings-form .form-group {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
 
-#miner-configs-form .form-control {
+#miner-settings-form .form-control {
   padding: 0.8rem;
   font-size: 16px;
 }
 
-#miner-configs-form .custom-select {
+#miner-settings-form .custom-select {
   display: block;
   height: auto;
 }

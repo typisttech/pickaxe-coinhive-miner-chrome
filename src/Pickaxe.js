@@ -1,5 +1,5 @@
 import Settings from './Settings.js';
-import MinerConfig from './MinerConfig.js';
+import MinerSettings from './MinerSettings.js';
 import Miners from './Miners.js';
 
 const iconPaths = Object.freeze({
@@ -41,14 +41,14 @@ class Pickaxe {
   reset(storage) {
     console.group('Pickaxe: reset');
     const {
-      minerConfigs,
+      minerSettings,
       isEnabled,
     } = Settings.fromStoreage(storage);
 
-    const configs = minerConfigs.map(({
+    const configs = minerSettings.map(({
       siteKey,
       cpuUsage,
-    }) => MinerConfig.build(siteKey, 'TODO', cpuUsage));
+    }) => MinerSettings.build(siteKey, 'TODO', cpuUsage));
 
     this.miners.reset(configs);
 

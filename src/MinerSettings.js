@@ -3,7 +3,7 @@ const {
   version,
 } = chrome.runtime.getManifest();
 
-class MinerConfig {
+class MinerSettings {
   static build(siteKey, userNameSuffix, cpuUsage) {
     return {
       siteKey,
@@ -16,4 +16,4 @@ class MinerConfig {
   }
 }
 
-export default MinerConfig;
+export default MinerSettings;

@@ -23,20 +23,20 @@ const addRowWithValues = ({
   </tr>
   `;
 
-  const tbody = document.getElementById('faq-miner-configs-tbody');
+  const tbody = document.getElementById('faq-miner-settings-tbody');
   tbody.insertAdjacentHTML('beforeend', rowHtml);
 };
 
 const updateFaqValues = () => {
   chrome.storage.local.get(null, (storage) => {
     const {
-      minerConfigs,
+      minerSettings,
     } = Settings.fromStoreage(storage);
 
     // Reset tbody
-    document.getElementById('faq-miner-configs-tbody').innerHTML = '';
+    document.getElementById('faq-miner-settings-tbody').innerHTML = '';
 
-    minerConfigs.forEach((config) => {
+    minerSettings.forEach((config) => {
       addRowWithValues(config);
     });
   });
