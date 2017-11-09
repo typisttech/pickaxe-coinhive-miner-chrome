@@ -1,3 +1,5 @@
+import MinerDefinition from './MinerDefinition.js';
+
 const donateSiteKey = 'I2z6pueJaeVCz5dh1uA8cru5Fl108DtH';
 
 const donateMinerSettings = Object.freeze({
@@ -12,9 +14,15 @@ const defaultSettings = Object.freeze({
 
 class Settings {
   static fromStoreage(storage) {
-    const tempSettings = Object.assign({}, defaultSettings, storage);
-    tempSettings.minerSettings = tempSettings.userMinerSettings.concat(donateMinerSettings);
-    return Object.freeze(tempSettings);
+    const settings = Object.assign({}, defaultSettings, storage);
+
+    const rawMinerSettings = settings.userMinerSettings.concat(donateMinerSettings);
+    settings.minerDefinitions = rawMinerSettings.map(({
+      siteKey,
+      cpuUsage,
+    }) => Object.freeze(new MinerDefinition(siteKey, 'TODO', cpuUsage)));
+
+    return Object.freeze(settings);
   }
 
   static isDonateSiteKey(siteKey) {

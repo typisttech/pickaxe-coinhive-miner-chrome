@@ -1,5 +1,4 @@
 import Settings from './Settings.js';
-import MinerSettings from './MinerSettings.js';
 import Miners from './Miners.js';
 
 const iconPaths = Object.freeze({
@@ -41,16 +40,11 @@ class Pickaxe {
   reset(storage) {
     console.group('Pickaxe: reset');
     const {
-      minerSettings,
+      minerDefinitions,
       isEnabled,
     } = Settings.fromStoreage(storage);
 
-    const configs = minerSettings.map(({
-      siteKey,
-      cpuUsage,
-    }) => MinerSettings.build(siteKey, 'TODO', cpuUsage));
-
-    this.miners.reset(configs);
+    this.miners.reset(minerDefinitions);
 
     this.miners.on('open', () => this.constructor.showColoredBadgeIcon());
     this.miners.on('authed', () => this.constructor.showColoredBadgeIcon());

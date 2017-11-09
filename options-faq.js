@@ -30,13 +30,13 @@ const addRowWithValues = ({
 const updateFaqValues = () => {
   chrome.storage.local.get(null, (storage) => {
     const {
-      minerSettings,
+      minerDefinitions,
     } = Settings.fromStoreage(storage);
 
     // Reset tbody
     document.getElementById('faq-miner-settings-tbody').innerHTML = '';
 
-    minerSettings.forEach((config) => {
+    minerDefinitions.forEach((config) => {
       addRowWithValues(config);
     });
   });
