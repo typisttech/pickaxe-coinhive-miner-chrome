@@ -7,6 +7,7 @@ const donateMinerConfig = Object.freeze({
 
 const defaultSettings = Object.freeze({
   isEnabled: true,
+  userMinerConfigs: [],
 });
 
 class Settings {
