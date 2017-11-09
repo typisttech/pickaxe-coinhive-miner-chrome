@@ -5,12 +5,5 @@
       "js": "always"
     }],
     "no-console": "off"
-  },
-  "globals": {
-    "chrome": true,
-    "CoinHive": true,
-    "document": true,
-    "navigator": true,
-    "window": true
   }
 }

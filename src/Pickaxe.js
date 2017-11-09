@@ -1,20 +1,9 @@
-import Settings from './Settings.js';
-import MinerConfig from './MinerConfig.js';
+/* global navigator:true */
+
+import Badge from './Badge.js';
 import Miners from './Miners.js';
-
-const iconPaths = Object.freeze({
-  16: 'icons/icon16.png',
-  32: 'icons/icon32.png',
-  48: 'icons/icon48.png',
-  128: 'icons/icon128.png',
-});
-
-const grayscaleIconPaths = Object.freeze({
-  16: 'icons/icon16-grayscale.png',
-  32: 'icons/icon32-grayscale.png',
-  48: 'icons/icon48-grayscale.png',
-  128: 'icons/icon128-grayscale.png',
-});
+import Settings from './Settings.js';
+import Storage from './Storage.js';
 
 class Pickaxe {
   constructor() {
@@ -23,10 +12,10 @@ class Pickaxe {
 
   static toggle() {
     console.group('Pickaxe: toggle');
-    chrome.storage.local.get(null, (storage) => {
-      const settings = Settings.fromStoreage(storage);
-      chrome.storage.local.set({
-        isEnabled: !settings.isEnabled,
+    Storage.get((storage) => {
+      const { isEnabled } = Settings.fromStoreage(storage);
+      Storage.set({
+        isEnabled: !isEnabled,
       });
     });
     console.groupEnd();
@@ -34,78 +23,44 @@ class Pickaxe {
 
   run() {
     console.group('Pickaxe: run');
-    chrome.storage.local.get(null, storage => this.reset(storage));
+    Storage.get(storage => this.reset(storage));
     console.groupEnd();
   }
 
   reset(storage) {
     console.group('Pickaxe: reset');
     const {
-      minerConfigs,
+      minerDefinitions,
       isEnabled,
     } = Settings.fromStoreage(storage);
 
-    const configs = minerConfigs.map(({
-      siteKey,
-      cpuUsage,
-    }) => MinerConfig.build(siteKey, 'TODO', cpuUsage));
+    this.miners.reset(minerDefinitions);
 
-    this.miners.reset(configs);
+    this.miners.on('open', () => Badge.showColoredIcon());
+    this.miners.on('authed', () => Badge.showColoredIcon());
 
-    this.miners.on('open', () => this.constructor.showColoredBadgeIcon());
-    this.miners.on('authed', () => this.constructor.showColoredBadgeIcon());
+    this.miners.on('found', () => Badge.updateText(this.getHashesPerSecond()));
 
-    this.miners.on('found', () => this.updateBadgeText());
+    this.miners.on('error', () => Badge.updateIcon(this.isMining()));
+    this.miners.on('error', () => Badge.updateText(this.getHashesPerSecond()));
 
-    this.miners.on('error', () => this.updateBadgeIcon());
-    this.miners.on('error', () => this.updateBadgeText());
+    this.miners.on('close', () => Badge.updateIcon(this.isMining()));
+    this.miners.on('close', () => Badge.updateText(this.getHashesPerSecond()));
 
-    this.miners.on('close', () => this.updateBadgeIcon());
-    this.miners.on('close', () => this.updateBadgeText());
-
+    Badge.updateText(0);
     if (isEnabled && navigator.onLine) {
+      Badge.showColoredIcon();
       this.miners.start();
-      this.constructor.showColoredBadgeIcon();
     } else {
+      Badge.showGrayscaleIcon();
       this.miners.stop();
-      this.constructor.showGrayscaleBadgeIcon();
     }
 
-    this.updateBadgeText();
     console.groupEnd();
   }
 
-  updateBadgeIcon() {
-    if (this.miners.isRunning()) {
-      this.constructor.showColoredBadgeIcon();
-    } else {
-      this.constructor.showGrayscaleBadgeIcon();
-    }
-  }
-
-  static showGrayscaleBadgeIcon() {
-    chrome.browserAction.setIcon({
-      path: grayscaleIconPaths,
-    });
-  }
-
-  static showColoredBadgeIcon() {
-    chrome.browserAction.setIcon({
-      path: iconPaths,
-    });
-  }
-
-  updateBadgeText() {
-    let text = '';
-    if (this.miners.isRunning()) {
-      const count = this.getHashesPerSecond();
-      text = (count > 9999) ? '>10k' : String(count);
-      text = (count < 1) ? '' : text;
-    }
-
-    chrome.browserAction.setBadgeText({
-      text,
-    });
+  isMining() {
+    return this.miners.isRunning();
   }
 
   getHashesPerSecond() {

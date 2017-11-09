@@ -1,4 +1,7 @@
+/* global document:true */
+
 import Settings from './src/Settings.js';
+import Storage from './src/Storage.js';
 
 const siteKeyHelpText = (siteKey) => {
   if (Settings.isDonateSiteKey(siteKey)) {
@@ -23,24 +26,24 @@ const addRowWithValues = ({
   </tr>
   `;
 
-  const tbody = document.getElementById('faq-miner-configs-tbody');
+  const tbody = document.getElementById('faq-miner-settings-tbody');
   tbody.insertAdjacentHTML('beforeend', rowHtml);
 };
 
 const updateFaqValues = () => {
-  chrome.storage.local.get(null, (storage) => {
+  Storage.get((storage) => {
     const {
-      minerConfigs,
+      minerDefinitions,
     } = Settings.fromStoreage(storage);
 
     // Reset tbody
-    document.getElementById('faq-miner-configs-tbody').innerHTML = '';
+    document.getElementById('faq-miner-settings-tbody').innerHTML = '';
 
-    minerConfigs.forEach((config) => {
+    minerDefinitions.forEach((config) => {
       addRowWithValues(config);
     });
   });
 };
 
-chrome.storage.onChanged.addListener(updateFaqValues);
+Storage.addonChangedListener(updateFaqValues);
 document.addEventListener('DOMContentLoaded', updateFaqValues);

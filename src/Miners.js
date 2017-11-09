@@ -1,3 +1,5 @@
+/* global CoinHive:true */
+
 export default class Miners {
   constructor() {
     console.group('Miners: init');

@@ -1,4 +1,7 @@
+/* global document:true */
+
 import Settings from './src/Settings.js';
+import Storage from './src/Storage.js';
 
 const getLast = nodeListOrArray => nodeListOrArray[nodeListOrArray.length - 1];
 
@@ -41,7 +44,7 @@ const addRow = () => {
   </tr>
   `;
 
-  const tbody = document.getElementById('miner-configs-tbody');
+  const tbody = document.getElementById('miner-settings-tbody');
   tbody.insertAdjacentHTML('beforeend', rowHtml);
 
   const removeButtons = document.getElementsByName('remove-button');
@@ -49,7 +52,7 @@ const addRow = () => {
   lastRemoveButton.addEventListener('click', event => removeRow(event));
 };
 
-const getMinerConfigElements = () => ({
+const getMinerSettingsElements = () => ({
   siteKeys: document.getElementsByName('siteKeys[]'),
   cpuUsages: document.getElementsByName('cpuUsages[]'),
 });
@@ -63,7 +66,7 @@ const addRowWithValues = ({
   const {
     siteKeys,
     cpuUsages,
-  } = getMinerConfigElements();
+  } = getMinerSettingsElements();
 
   const lastSiteKey = getLast(siteKeys);
   const lastCpuUsage = getLast(cpuUsages);
@@ -73,25 +76,25 @@ const addRowWithValues = ({
 };
 
 const updateFormValues = () => {
-  chrome.storage.local.get(null, (storage) => {
+  Storage.get((storage) => {
     const {
-      userMinerConfigs,
+      userMinerSettings,
     } = Settings.fromStoreage(storage);
 
     // Reset tbody
-    document.getElementById('miner-configs-tbody').innerHTML = '';
+    document.getElementById('miner-settings-tbody').innerHTML = '';
 
-    userMinerConfigs.forEach((config) => {
+    userMinerSettings.forEach((config) => {
       addRowWithValues(config);
     });
 
-    if (userMinerConfigs.length < 1) {
+    if (userMinerSettings.length < 1) {
       addRow();
     }
   });
 };
 
-chrome.storage.onChanged.addListener(updateFormValues);
+Storage.addonChangedListener(updateFormValues);
 document.addEventListener('DOMContentLoaded', updateFormValues);
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -99,24 +102,24 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('miner-configs-form').addEventListener('submit', (event) => {
+  document.getElementById('miner-settings-form').addEventListener('submit', (event) => {
     event.preventDefault();
 
     const {
       siteKeys,
       cpuUsages,
-    } = getMinerConfigElements();
+    } = getMinerSettingsElements();
 
-    const userMinerConfigs = [];
+    const userMinerSettings = [];
     for (let i = 0; i < siteKeys.length; i += 1) {
-      userMinerConfigs.push({
+      userMinerSettings.push({
         siteKey: siteKeys[i].value,
         cpuUsage: cpuUsages[i].value,
       });
     }
 
-    chrome.storage.local.set({
-      userMinerConfigs,
+    Storage.set({
+      userMinerSettings,
     }, () => {
       document.getElementById('form-saved-alert').style.display = 'block';
     });
