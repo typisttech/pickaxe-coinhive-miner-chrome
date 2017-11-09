@@ -1,3 +1,5 @@
+/* global chrome:true */
+
 const {
   short_name: shortName,
   version,

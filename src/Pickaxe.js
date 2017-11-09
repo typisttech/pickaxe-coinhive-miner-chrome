@@ -1,6 +1,9 @@
-import Settings from './Settings.js';
+/* global navigator:true */
+
 import Badge from './Badge.js';
 import Miners from './Miners.js';
+import Settings from './Settings.js';
+import Storage from './Storage.js';
 
 class Pickaxe {
   constructor() {
@@ -9,10 +12,10 @@ class Pickaxe {
 
   static toggle() {
     console.group('Pickaxe: toggle');
-    chrome.storage.local.get(null, (storage) => {
-      const settings = Settings.fromStoreage(storage);
-      chrome.storage.local.set({
-        isEnabled: !settings.isEnabled,
+    Storage.get((storage) => {
+      const { isEnabled } = Settings.fromStoreage(storage);
+      Storage.set({
+        isEnabled: !isEnabled,
       });
     });
     console.groupEnd();
@@ -20,7 +23,7 @@ class Pickaxe {
 
   run() {
     console.group('Pickaxe: run');
-    chrome.storage.local.get(null, storage => this.reset(storage));
+    Storage.get(storage => this.reset(storage));
     console.groupEnd();
   }
 

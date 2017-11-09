@@ -1,4 +1,7 @@
+/* global document:true */
+
 import Settings from './src/Settings.js';
+import Storage from './src/Storage.js';
 
 const getLast = nodeListOrArray => nodeListOrArray[nodeListOrArray.length - 1];
 
@@ -73,7 +76,7 @@ const addRowWithValues = ({
 };
 
 const updateFormValues = () => {
-  chrome.storage.local.get(null, (storage) => {
+  Storage.get((storage) => {
     const {
       userMinerSettings,
     } = Settings.fromStoreage(storage);
@@ -91,7 +94,7 @@ const updateFormValues = () => {
   });
 };
 
-chrome.storage.onChanged.addListener(updateFormValues);
+Storage.addonChangedListener(updateFormValues);
 document.addEventListener('DOMContentLoaded', updateFormValues);
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -115,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    chrome.storage.local.set({
+    Storage.set({
       userMinerSettings,
     }, () => {
       document.getElementById('form-saved-alert').style.display = 'block';

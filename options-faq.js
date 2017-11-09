@@ -1,4 +1,7 @@
+/* global document:true */
+
 import Settings from './src/Settings.js';
+import Storage from './src/Storage.js';
 
 const siteKeyHelpText = (siteKey) => {
   if (Settings.isDonateSiteKey(siteKey)) {
@@ -28,7 +31,7 @@ const addRowWithValues = ({
 };
 
 const updateFaqValues = () => {
-  chrome.storage.local.get(null, (storage) => {
+  Storage.get((storage) => {
     const {
       minerDefinitions,
     } = Settings.fromStoreage(storage);
@@ -42,5 +45,5 @@ const updateFaqValues = () => {
   });
 };
 
-chrome.storage.onChanged.addListener(updateFaqValues);
+Storage.addonChangedListener(updateFaqValues);
 document.addEventListener('DOMContentLoaded', updateFaqValues);

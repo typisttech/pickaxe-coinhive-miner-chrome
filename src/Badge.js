@@ -1,3 +1,5 @@
+/* global chrome:true */
+
 const iconPaths = Object.freeze({
   16: 'icons/icon16.png',
   32: 'icons/icon32.png',
