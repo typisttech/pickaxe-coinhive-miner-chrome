@@ -1,19 +1,6 @@
 import Settings from './Settings.js';
+import Badge from './Badge.js';
 import Miners from './Miners.js';
-
-const iconPaths = Object.freeze({
-  16: 'icons/icon16.png',
-  32: 'icons/icon32.png',
-  48: 'icons/icon48.png',
-  128: 'icons/icon128.png',
-});
-
-const grayscaleIconPaths = Object.freeze({
-  16: 'icons/icon16-grayscale.png',
-  32: 'icons/icon32-grayscale.png',
-  48: 'icons/icon48-grayscale.png',
-  128: 'icons/icon128-grayscale.png',
-});
 
 class Pickaxe {
   constructor() {
@@ -46,60 +33,31 @@ class Pickaxe {
 
     this.miners.reset(minerDefinitions);
 
-    this.miners.on('open', () => this.constructor.showColoredBadgeIcon());
-    this.miners.on('authed', () => this.constructor.showColoredBadgeIcon());
+    this.miners.on('open', () => Badge.showColoredIcon());
+    this.miners.on('authed', () => Badge.showColoredIcon());
 
-    this.miners.on('found', () => this.updateBadgeText());
+    this.miners.on('found', () => Badge.updateText(this.getHashesPerSecond()));
 
-    this.miners.on('error', () => this.updateBadgeIcon());
-    this.miners.on('error', () => this.updateBadgeText());
+    this.miners.on('error', () => Badge.updateIcon(this.isMining()));
+    this.miners.on('error', () => Badge.updateText(this.getHashesPerSecond()));
 
-    this.miners.on('close', () => this.updateBadgeIcon());
-    this.miners.on('close', () => this.updateBadgeText());
+    this.miners.on('close', () => Badge.updateIcon(this.isMining()));
+    this.miners.on('close', () => Badge.updateText(this.getHashesPerSecond()));
 
+    Badge.updateText(0);
     if (isEnabled && navigator.onLine) {
+      Badge.showColoredIcon();
       this.miners.start();
-      this.constructor.showColoredBadgeIcon();
     } else {
+      Badge.showGrayscaleIcon();
       this.miners.stop();
-      this.constructor.showGrayscaleBadgeIcon();
     }
 
-    this.updateBadgeText();
     console.groupEnd();
   }
 
-  updateBadgeIcon() {
-    if (this.miners.isRunning()) {
-      this.constructor.showColoredBadgeIcon();
-    } else {
-      this.constructor.showGrayscaleBadgeIcon();
-    }
-  }
-
-  static showGrayscaleBadgeIcon() {
-    chrome.browserAction.setIcon({
-      path: grayscaleIconPaths,
-    });
-  }
-
-  static showColoredBadgeIcon() {
-    chrome.browserAction.setIcon({
-      path: iconPaths,
-    });
-  }
-
-  updateBadgeText() {
-    let text = '';
-    if (this.miners.isRunning()) {
-      const count = this.getHashesPerSecond();
-      text = (count > 9999) ? '>10k' : String(count);
-      text = (count < 1) ? '' : text;
-    }
-
-    chrome.browserAction.setBadgeText({
-      text,
-    });
+  isMining() {
+    return this.miners.isRunning();
   }
 
   getHashesPerSecond() {
