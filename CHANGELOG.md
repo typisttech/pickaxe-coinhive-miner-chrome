@@ -1,6 +1,21 @@
 # Change Log
 
-## [0.3.0](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/tree/0.3.0) (2017-11-10)
+## [0.3.1](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/tree/0.3.1) (2017-11-11)
+[Full Changelog](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/compare/0.3.0...0.3.1)
+
+**Implemented enhancements:**
+
+- Customize Coinhive username [\#15](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/issues/15)
+
+**Closed issues:**
+
+- Bump requirement to Chrome 63  [\#25](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/issues/25)
+
+**Merged pull requests:**
+
+- Bump requirement to Chrome 63 [\#26](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/26) ([TangRufus](https://github.com/TangRufus))
+
+## [0.3.0](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/tree/0.3.0) (2017-11-09)
 [Full Changelog](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/compare/0.2.0...0.3.0)
 
 **Implemented enhancements:**
@@ -14,6 +29,7 @@
 
 **Merged pull requests:**
 
+- Version bump 0.3.0 [\#22](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/22) ([TangRufus](https://github.com/TangRufus))
 - Allow customizing Coinhive username [\#21](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/21) ([TangRufus](https://github.com/TangRufus))
 - Refactor [\#17](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/17) ([TangRufus](https://github.com/TangRufus))
 - Allow unlimited miners; Remove referreral miner [\#16](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/16) ([TangRufus](https://github.com/TangRufus))
