@@ -3,7 +3,6 @@
   "rules": {
     "import/extensions": ["error", {
       "js": "always"
-    }],
-    "no-console": "off"
+    }]
   }
 }

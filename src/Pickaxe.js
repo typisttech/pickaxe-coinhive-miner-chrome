@@ -1,5 +1,4 @@
 /* global chrome:true, navigator:true */
-
 import Badge from './Badge.js';
 import Miners from './Miners.js';
 import Notification from './Notification.js';
@@ -13,7 +12,6 @@ class Pickaxe {
   }
 
   static toggle() {
-    console.group('Pickaxe: toggle');
     Storage.get((storage) => {
       const {
         isEnabled,
@@ -22,17 +20,13 @@ class Pickaxe {
         isEnabled: !isEnabled,
       });
     });
-    console.groupEnd();
   }
 
   run() {
-    console.group('Pickaxe: run');
     Storage.get(storage => this.reset(storage));
-    console.groupEnd();
   }
 
   reset(storage) {
-    console.group('Pickaxe: reset');
     const {
       minerDefinitions,
       isEnabled,
@@ -73,8 +67,6 @@ class Pickaxe {
       Badge.showGrayscaleIcon();
       this.miners.stop();
     }
-
-    console.groupEnd();
   }
 
   isMining() {
