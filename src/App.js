@@ -5,7 +5,7 @@ import Notification from './Notification.js';
 import Settings from './Settings.js';
 import Storage from './Storage.js';
 
-class Pickaxe {
+class App {
   constructor() {
     this.miners = new Miners();
     this.notification = new Notification();
@@ -78,4 +78,4 @@ class Pickaxe {
   }
 }
 
-export default Pickaxe;
+export default App;
