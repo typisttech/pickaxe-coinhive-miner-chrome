@@ -23,25 +23,43 @@ class App {
   }
 
   run() {
-    Storage.get(storage => this.reset(storage));
+    Storage.get((storage) => {
+      const {
+        minerDefinitions,
+        isEnabled,
+      } = Settings.fromStoreage(storage);
+      const shouldMine = this.shouldMine(isEnabled);
+      const finalMinerDefinitions = (shouldMine) ? minerDefinitions : [];
+
+      this.notification.reset();
+
+      Badge.updateIcon(shouldMine);
+      Badge.updateText(0);
+
+      this.checkCoinhive(isEnabled);
+
+      this.resetMiners(finalMinerDefinitions);
+      this.miners.start();
+    });
   }
 
-  reset(storage) {
-    const {
-      minerDefinitions,
-      isEnabled,
-    } = Settings.fromStoreage(storage);
+  shouldMine(isEnabled) {
+    return isEnabled && navigator.onLine && typeof CoinHive !== 'undefined';
+  }
 
-    this.notification.reset();
-
-    if (isEnabled && typeof CoinHive === 'undefined') {
-      if (navigator.onLine) {
-        chrome.runtime.reload();
-      } else {
-        this.notification.coinhiveOffline();
-      }
+  checkCoinhive(isEnabled) {
+    if (typeof CoinHive !== 'undefined' || !isEnabled) {
+      return;
     }
 
+    if (navigator.onLine) {
+      chrome.runtime.reload();
+    } else {
+      this.notification.coinhiveOffline();
+    }
+  }
+
+  resetMiners(minerDefinitions) {
     this.miners.reset(minerDefinitions);
 
     this.miners.on('open', () => Badge.showColoredIcon());
@@ -58,15 +76,6 @@ class App {
 
     this.miners.on('close', () => Badge.updateIcon(this.isMining()));
     this.miners.on('close', () => Badge.updateText(this.getHashesPerSecond()));
-
-    Badge.updateText(0);
-    if (isEnabled && navigator.onLine) {
-      Badge.showColoredIcon();
-      this.miners.start();
-    } else {
-      Badge.showGrayscaleIcon();
-      this.miners.stop();
-    }
   }
 
   isMining() {
