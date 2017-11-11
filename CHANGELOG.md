@@ -1,6 +1,30 @@
 # Change Log
 
-## [0.3.1](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/tree/0.3.1) (2017-11-11)
+## [0.4.0](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/tree/0.4.0) (2017-11-12)
+[Full Changelog](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/compare/0.3.1...0.4.0)
+
+**Implemented enhancements:**
+
+- Desktop notification when Coinhive reports incorrect site keys [\#12](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/issues/12)
+
+**Fixed bugs:**
+
+- Start Chrome before internet connection results in `Failed to load resource: net::ERR\_NETWORK\_CHANGED` [\#19](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/issues/19)
+
+**Closed issues:**
+
+- Add `.gitattributes` to reduce extension size [\#24](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/issues/24)
+- FAQ: Add QR image \(monero public address\) on donate section [\#23](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/issues/23)
+
+**Merged pull requests:**
+
+- Refactor & Rename: `Pickaxe` --\> `App` [\#32](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/32) ([TangRufus](https://github.com/TangRufus))
+- Reload when `Coinhive` is `undefined` [\#31](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/31) ([TangRufus](https://github.com/TangRufus))
+- Add `.gitattributes` to reduce extension size [\#30](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/30) ([TangRufus](https://github.com/TangRufus))
+- FAQ: Add Monero public address QR image [\#29](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/29) ([TangRufus](https://github.com/TangRufus))
+- Show desktop notifications on miner errors [\#28](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/28) ([TangRufus](https://github.com/TangRufus))
+
+## [0.3.1](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/tree/0.3.1) (2017-11-10)
 [Full Changelog](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/compare/0.3.0...0.3.1)
 
 **Implemented enhancements:**
@@ -13,6 +37,7 @@
 
 **Merged pull requests:**
 
+- Version bump 0.3.1 [\#27](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/27) ([TangRufus](https://github.com/TangRufus))
 - Bump requirement to Chrome 63 [\#26](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/26) ([TangRufus](https://github.com/TangRufus))
 
 ## [0.3.0](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/tree/0.3.0) (2017-11-09)
