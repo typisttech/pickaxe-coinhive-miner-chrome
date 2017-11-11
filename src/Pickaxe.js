@@ -1,4 +1,4 @@
-/* global navigator:true */
+/* global chrome:true, navigator:true */
 
 import Badge from './Badge.js';
 import Miners from './Miners.js';
@@ -38,8 +38,17 @@ class Pickaxe {
       isEnabled,
     } = Settings.fromStoreage(storage);
 
-    this.miners.reset(minerDefinitions);
     this.notification.reset();
+
+    if (isEnabled && typeof CoinHive === 'undefined') {
+      if (navigator.onLine) {
+        chrome.runtime.reload();
+      } else {
+        this.notification.coinhiveOffline();
+      }
+    }
+
+    this.miners.reset(minerDefinitions);
 
     this.miners.on('open', () => Badge.showColoredIcon());
 
