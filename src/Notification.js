@@ -17,7 +17,7 @@ export default class Notification {
   }
 
   minerError(siteKey, {
-    error
+    error,
   }) {
     const id = `pickaxe-miner-error-${siteKey}-${error}`;
 
@@ -40,7 +40,7 @@ export default class Notification {
     chrome.notifications.getAll((notifications) => {
       Object.keys(notifications).forEach((id) => {
         chrome.notifications.clear(id);
-      })
+      });
     });
 
     this.ids.minerErrors = [];

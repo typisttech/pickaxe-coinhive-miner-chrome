@@ -16,7 +16,7 @@ class Pickaxe {
     console.group('Pickaxe: toggle');
     Storage.get((storage) => {
       const {
-        isEnabled
+        isEnabled,
       } = Settings.fromStoreage(storage);
       Storage.set({
         isEnabled: !isEnabled,

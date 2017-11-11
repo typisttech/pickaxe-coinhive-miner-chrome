@@ -1,4 +1,5 @@
 /* global CoinHive:true */
+/* eslint no-underscore-dangle: ["error", { "allow": ["_siteKey"] }] */
 export default class Miners {
   constructor() {
     console.group('Miners: init');
@@ -16,9 +17,9 @@ export default class Miners {
       userName,
       options,
     }) => {
-      const miner = (userName)
-        ? new CoinHive.User(siteKey, userName, options)
-        : new CoinHive.Anonymous(siteKey, options);
+      const miner = (userName) ?
+        new CoinHive.User(siteKey, userName, options) :
+        new CoinHive.Anonymous(siteKey, options);
 
       this.miners.push(miner);
     }, this);
@@ -29,7 +30,7 @@ export default class Miners {
 
   on(eventName, callback) {
     this.miners.forEach((miner) => {
-      miner.on(eventName, (params) => callback(miner._siteKey, params));
+      miner.on(eventName, params => callback(miner._siteKey, params));
     });
   }
 
