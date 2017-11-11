@@ -1,19 +1,19 @@
 /* global chrome:true window:true */
 
-import Pickaxe from './src/Pickaxe.js';
+import App from './src/App.js';
 import Storage from './src/Storage.js';
 
-const pickaxe = new Pickaxe();
+const app = new App();
 
 // Run on page load.
-window.addEventListener('load', () => pickaxe.run());
+window.addEventListener('load', () => app.run());
 
 // Re-run when changed.
-Storage.addonChangedListener(() => pickaxe.run());
-window.addEventListener('online', () => pickaxe.run());
-window.addEventListener('offline', () => pickaxe.run());
+Storage.addonChangedListener(() => app.run());
+window.addEventListener('online', () => app.run());
+window.addEventListener('offline', () => app.run());
 
 // Menu icon clicks.
-chrome.browserAction.onClicked.addListener(() => pickaxe.constructor.toggle());
+chrome.browserAction.onClicked.addListener(() => app.toggle());
 
 chrome.runtime.onInstalled.addListener(() => chrome.runtime.openOptionsPage());

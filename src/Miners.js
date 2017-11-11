@@ -1,14 +1,14 @@
 /* global CoinHive:true */
 /* eslint no-underscore-dangle: ["error", { "allow": ["_siteKey"] }] */
+/* eslint no-console: "off" */
 export default class Miners {
   constructor() {
-    console.group('Miners: init');
+    console.log('Miners: init');
     this.miners = [];
-    console.groupEnd();
   }
 
   reset(configs) {
-    console.group('Miners: reset');
+    console.log('Miners: reset');
     this.stop();
 
     this.miners = [];
@@ -24,8 +24,7 @@ export default class Miners {
       this.miners.push(miner);
     }, this);
 
-    console.debug('Miners: ', this.miners);
-    console.groupEnd();
+    console.log('Miners: ', this.miners);
   }
 
   on(eventName, callback) {
@@ -35,19 +34,17 @@ export default class Miners {
   }
 
   start() {
-    console.group('Miners: start');
+    console.log('Miners: start');
     this.miners.forEach((miner) => {
       miner.start(CoinHive.FORCE_MULTI_TAB);
     });
-    console.groupEnd();
   }
 
   stop() {
-    console.group('Miners: stop');
+    console.log('Miners: stop');
     this.miners.forEach((miner) => {
       miner.stop();
     });
-    console.groupEnd();
   }
 
   isRunning() {
