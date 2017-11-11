@@ -13,6 +13,7 @@
   },
   "minimum_chrome_version": "63",
   "permissions": [
+    "notifications",
     "storage"
   ],
   "options_page": "options.html",
@@ -28,5 +29,8 @@
       "128": "icons/icon128.png"
     },
     "default_title": "Pickaxe: Coinhive Monero Miner for Chrome"
-  }
+  },
+  "web_accessible_resources": [
+    "icons/icon48.png"
+  ]
 }
