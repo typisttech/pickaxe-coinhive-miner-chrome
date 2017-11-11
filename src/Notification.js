@@ -1,4 +1,5 @@
 /* global chrome:true */
+/* eslint class-methods-use-this: ["error", { "exceptMethods": ["coinhiveOffline"] }] */
 export default class Notification {
   constructor() {
     this.ids = {
@@ -33,6 +34,15 @@ export default class Notification {
       title: `Error: ${error}`,
       message: `Pickaxe Miner ${siteKey}`,
       requireInteraction: ['invalid_site_key', 'invalid_user_name'].includes(error),
+    });
+  }
+
+  coinhiveOffline() {
+    chrome.notifications.create({
+      type: 'basic',
+      iconUrl: 'icons/icon48.png',
+      title: 'Unable to download Coinhive JS library',
+      message: 'Pickaxe will restart itself when internet connection is back',
     });
   }
 
