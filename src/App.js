@@ -1,4 +1,5 @@
 /* global chrome:true, navigator:true */
+/* eslint class-methods-use-this: ["error", { "exceptMethods": ["shouldMine", "toggle"] }] */
 import Badge from './Badge.js';
 import Miners from './Miners.js';
 import Notification from './Notification.js';
@@ -11,7 +12,7 @@ class App {
     this.notification = new Notification();
   }
 
-  static toggle() {
+  toggle() {
     Storage.get((storage) => {
       const {
         isEnabled,
