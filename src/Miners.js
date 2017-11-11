@@ -29,7 +29,7 @@ export default class Miners {
 
   on(eventName, callback) {
     this.miners.forEach((miner) => {
-      miner.on(eventName, callback);
+      miner.on(eventName, (params) => callback(miner._siteKey, params));
     });
   }
 
