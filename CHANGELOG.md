@@ -1,6 +1,14 @@
 # Change Log
 
-## [0.4.0](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/tree/0.4.0) (2017-11-12)
+## [0.5.0](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/tree/0.5.0) (2017-11-13)
+[Full Changelog](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/compare/0.4.0...0.5.0)
+
+**Merged pull requests:**
+
+- Webpack: Transpile ES6 [\#35](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/35) ([TangRufus](https://github.com/TangRufus))
+- Refactor: Extract cops [\#34](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/34) ([TangRufus](https://github.com/TangRufus))
+
+## [0.4.0](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/tree/0.4.0) (2017-11-11)
 [Full Changelog](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/compare/0.3.1...0.4.0)
 
 **Implemented enhancements:**
@@ -18,6 +26,7 @@
 
 **Merged pull requests:**
 
+- Version bump 0.4.0 [\#33](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/33) ([TangRufus](https://github.com/TangRufus))
 - Refactor & Rename: `Pickaxe` --\> `App` [\#32](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/32) ([TangRufus](https://github.com/TangRufus))
 - Reload when `Coinhive` is `undefined` [\#31](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/31) ([TangRufus](https://github.com/TangRufus))
 - Add `.gitattributes` to reduce extension size [\#30](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/30) ([TangRufus](https://github.com/TangRufus))
