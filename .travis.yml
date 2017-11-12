@@ -17,3 +17,15 @@ notifications:
 
 script:
   - yarn run lint
+
+before_deploy:
+  - yarn run build
+  - mv build/pickaxe-coinhive-miner-chrome.zip build/pickaxe-coinhive-miner-chrome-$TRAVIS_TAG.zip
+
+deploy:
+  - provider: releases
+    api_key: $GITHUB_ACCESS_TOKEN
+    file: build/pickaxe-coinhive-miner-chrome-$TRAVIS_TAG.zip
+    skip_cleanup: true
+    on:
+      tags: true
