@@ -1,6 +1,6 @@
 /* global document:true */
-import Settings from './src/Settings.js';
-import Storage from './src/Storage.js';
+import Settings from '../../src/Settings.js';
+import Storage from '../../src/Storage.js';
 
 const siteKeyHelpText = (siteKey) => {
   if (Settings.isDonateSiteKey(siteKey)) {

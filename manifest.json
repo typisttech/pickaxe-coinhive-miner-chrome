@@ -11,7 +11,7 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
-  "minimum_chrome_version": "63",
+  "minimum_chrome_version": "51",
   "permissions": [
     "notifications",
     "storage"
@@ -20,7 +20,7 @@
   "background": {
     "page": "background.html"
   },
-  "content_security_policy": "script-src 'self' https://coinhive.com; object-src 'self'",
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://coinhive.com; object-src 'self'",
   "browser_action": {
     "default_icon": {
       "16": "icons/icon16.png",
