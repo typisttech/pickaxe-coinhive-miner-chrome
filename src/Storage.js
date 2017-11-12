@@ -1,6 +1,5 @@
 /* global chrome:true */
-
-class Storage {
+export default class Storage {
   static get(callback) {
     chrome.storage.local.get(null, (storage) => {
       callback(storage);
@@ -17,5 +16,3 @@ class Storage {
     chrome.storage.onChanged.addListener(listener);
   }
 }
-
-export default Storage;

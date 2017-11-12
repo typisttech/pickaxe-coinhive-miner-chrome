@@ -1,15 +1,22 @@
-/* global chrome:true, navigator:true */
-/* eslint class-methods-use-this: ["error", { "exceptMethods": ["shouldMine", "toggle"] }] */
+/* eslint class-methods-use-this: ["error", { "exceptMethods": ["toggle"] }] */
 import Badge from './Badge.js';
 import Miners from './Miners.js';
 import Notification from './Notification.js';
 import Settings from './Settings.js';
 import Storage from './Storage.js';
+import CoinHiveCop from './Cops/CoinHiveCop.js';
+import InternetConnectionCop from './Cops/InternetConnectionCop.js';
+import SettingsCop from './Cops/SettingsCop.js';
 
 class App {
   constructor() {
     this.miners = new Miners();
     this.notification = new Notification();
+    this.cops = [
+      new SettingsCop(),
+      new InternetConnectionCop(),
+      new CoinHiveCop(this.notification),
+    ];
   }
 
   toggle() {
@@ -25,39 +32,32 @@ class App {
 
   run() {
     Storage.get((storage) => {
-      const {
-        minerDefinitions,
-        isEnabled,
-      } = Settings.fromStoreage(storage);
-      const shouldMine = this.shouldMine(isEnabled);
-      const finalMinerDefinitions = (shouldMine) ? minerDefinitions : [];
+      const settings = Settings.fromStoreage(storage);
+      const shouldMine = this.shouldMine(settings);
+      const minerDefinitions = (shouldMine) ? settings.minerDefinitions : [];
 
-      this.notification.reset();
+      this.resetUi(shouldMine);
 
-      Badge.updateIcon(shouldMine);
-      Badge.updateText(0);
+      this.check();
 
-      this.checkCoinhive(isEnabled);
-
-      this.resetMiners(finalMinerDefinitions);
+      this.resetMiners(minerDefinitions);
       this.miners.start();
     });
   }
 
-  shouldMine(isEnabled) {
-    return isEnabled && navigator.onLine && typeof CoinHive !== 'undefined';
+  shouldMine(settings) {
+    return this.cops.reduce((shouldMine, cop) => shouldMine && cop.shouldMine(settings), true);
   }
 
-  checkCoinhive(isEnabled) {
-    if (typeof CoinHive !== 'undefined' || !isEnabled) {
-      return;
-    }
+  resetUi(shouldMine) {
+    this.notification.reset();
 
-    if (navigator.onLine) {
-      chrome.runtime.reload();
-    } else {
-      this.notification.coinhiveOffline();
-    }
+    Badge.updateIcon(shouldMine);
+    Badge.updateText(0);
+  }
+
+  check() {
+    this.cops.forEach(cop => cop.check());
   }
 
   resetMiners(minerDefinitions) {
