@@ -1,10 +1,19 @@
 # Change Log
 
-## [0.5.0](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/tree/0.5.0) (2017-11-13)
+## [0.5.1](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/tree/0.5.1) (2017-11-18)
+[Full Changelog](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/compare/0.5.0...0.5.1)
+
+**Merged pull requests:**
+
+- Readme: Update donation addresses and QR code images [\#38](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/38) ([TangRufus](https://github.com/TangRufus))
+- yarn upgrade [\#37](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/37) ([TangRufus](https://github.com/TangRufus))
+
+## [0.5.0](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/tree/0.5.0) (2017-11-12)
 [Full Changelog](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/compare/0.4.0...0.5.0)
 
 **Merged pull requests:**
 
+- Version bump 0.5.0 [\#36](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/36) ([TangRufus](https://github.com/TangRufus))
 - Webpack: Transpile ES6 [\#35](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/35) ([TangRufus](https://github.com/TangRufus))
 - Refactor: Extract cops [\#34](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/34) ([TangRufus](https://github.com/TangRufus))
 
