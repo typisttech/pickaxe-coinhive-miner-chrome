@@ -15,7 +15,9 @@ export default class CoinHiveCop {
     }
 
     if (navigator.onLine) {
-      chrome.runtime.reload();
+      setTimeout(() => {
+        chrome.runtime.reload();
+      }, 60000);
     } else {
       this.notification.coinhiveOffline();
     }
