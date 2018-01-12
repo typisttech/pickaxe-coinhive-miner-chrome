@@ -2,8 +2,8 @@
   "manifest_version": 2,
   "name": "Pickaxe: Coinhive Monero Miner for Chrome",
   "short_name": "PickaxeCoinhiveChrome",
-  "version": "0.5.1",
-  "description": "Mine Monero (XMR) on Chrome using Coinhive JavaScript miner",
+  "version": "0.5.2",
+  "description": "Mine Monero (XMR) on Chrome using Coinhive official JavaScript miner",
   "homepage_url": "https://cnhv.co/hy1",
   "icons": {
     "16": "icons/icon16.png",
