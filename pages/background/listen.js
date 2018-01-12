@@ -14,5 +14,3 @@ window.addEventListener('offline', () => app.run());
 
 // Menu icon clicks.
 chrome.browserAction.onClicked.addListener(() => app.toggle());
-
-chrome.runtime.onInstalled.addListener(() => chrome.runtime.openOptionsPage());
