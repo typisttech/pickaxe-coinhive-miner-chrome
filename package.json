@@ -1,16 +1,26 @@
 {
+  "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.34"
+  },
   "devDependencies": {
-    "cross-env": "^5.1.1",
-    "eslint": "^4.10.0",
+    "@babel/core": "^7.0.0-beta.34",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.34",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.34",
+    "@babel/plugin-transform-runtime": "^7.0.0-beta.34",
+    "@babel/plugin-transform-spread": "^7.0.0-beta.34",
+    "@babel/preset-env": "^7.0.0-beta.34",
+    "babel-eslint": "^8.0.3",
+    "babel-loader": "^8.0.0-beta.0",
+    "eslint": "^4.13.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
-    "laravel-mix": "^1.6.1"
+    "webpack": "^3.10.0"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --fix",
-    "dev": "node node_modules/.bin/cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "node node_modules/.bin/cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "build": "yarn run dev && git add -f dist && uploadStash=`git stash create` && git archive -o build/pickaxe-coinhive-miner-chrome.zip ${uploadStash} && git rm -r --cached dist"
+    "dev": "webpack --progress --hide-modules",
+    "watch": "yarn run dev --watch",
+    "build": "yarn run dev && git add -f dist && uploadStash=`git stash create` && git archive -o build/clepsydra-chrome.zip ${uploadStash} && git rm -r --cached dist"
   }
 }
