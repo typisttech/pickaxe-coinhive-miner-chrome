@@ -1,5 +1,5 @@
 /* global chrome:true */
-import MinerDefinition from './MinerDefinition.js';
+import MinerDefinition from './MinerDefinition';
 
 const {
   short_name: shortName,

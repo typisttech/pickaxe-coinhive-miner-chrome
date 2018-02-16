@@ -1,10 +1,18 @@
 # Change Log
 
+## [0.6.0](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/tree/0.6.0) (2018-02-16)
+[Full Changelog](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/compare/0.5.2...0.6.0)
+
+**Merged pull requests:**
+
+- Use webpack [\#44](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/44) ([TangRufus](https://github.com/TangRufus))
+
 ## [0.5.2](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/tree/0.5.2) (2018-01-12)
 [Full Changelog](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/compare/0.5.1...0.5.2)
 
 **Merged pull requests:**
 
+- Version bump 0.5.2 [\#43](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/43) ([TangRufus](https://github.com/TangRufus))
 - Option Page: Update donation info [\#42](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/42) ([TangRufus](https://github.com/TangRufus))
 - Fix: Reloaded too frequently when coinhive lib not downloaded [\#41](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/41) ([TangRufus](https://github.com/TangRufus))
 - Update email address [\#40](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/40) ([TangRufus](https://github.com/TangRufus))

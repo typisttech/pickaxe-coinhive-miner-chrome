@@ -1,12 +1,12 @@
 /* eslint class-methods-use-this: ["error", { "exceptMethods": ["toggle"] }] */
-import Badge from './Badge.js';
-import Miners from './Miners.js';
-import Notification from './Notification.js';
-import Settings from './Settings.js';
-import Storage from './Storage.js';
-import CoinHiveCop from './Cops/CoinHiveCop.js';
-import InternetConnectionCop from './Cops/InternetConnectionCop.js';
-import SettingsCop from './Cops/SettingsCop.js';
+import Badge from './Badge';
+import Miners from './Miners';
+import Notification from './Notification';
+import Settings from './Settings';
+import Storage from './Storage';
+import CoinHiveCop from './Cops/CoinHiveCop';
+import InternetConnectionCop from './Cops/InternetConnectionCop';
+import SettingsCop from './Cops/SettingsCop';
 
 class App {
   constructor() {

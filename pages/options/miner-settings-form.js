@@ -1,6 +1,6 @@
 /* global document:true */
-import Settings from '../../src/Settings.js';
-import Storage from '../../src/Storage.js';
+import Settings from '../../src/Settings';
+import Storage from '../../src/Storage';
 
 const getLast = nodeListOrArray => nodeListOrArray[nodeListOrArray.length - 1];
 
