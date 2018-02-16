@@ -4,5 +4,4 @@
 /src                export-ignore
 /*.md               export-ignore
 /package.json       export-ignore
-/webpack.mix.js     export-ignore
 /yarn.lock          export-ignore
