@@ -5,6 +5,7 @@
 
 **Merged pull requests:**
 
+- Version bump 0.6.0 [\#45](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/45) ([TangRufus](https://github.com/TangRufus))
 - Use webpack [\#44](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/pull/44) ([TangRufus](https://github.com/TangRufus))
 
 ## [0.5.2](https://github.com/TypistTech/pickaxe-coinhive-miner-chrome/tree/0.5.2) (2018-01-12)
