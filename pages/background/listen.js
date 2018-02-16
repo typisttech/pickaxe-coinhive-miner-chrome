@@ -1,6 +1,6 @@
 /* global chrome:true window:true */
-import App from '../../src/App.js';
-import Storage from '../../src/Storage.js';
+import App from '../../src/App';
+import Storage from '../../src/Storage';
 
 const app = new App();
 
