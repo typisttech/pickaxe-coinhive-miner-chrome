@@ -21,6 +21,6 @@
     "lint:fix": "eslint . --fix",
     "dev": "webpack --progress --hide-modules",
     "watch": "yarn run dev --watch",
-    "build": "yarn run dev && git add -f dist && uploadStash=`git stash create` && git archive -o build/clepsydra-chrome.zip ${uploadStash} && git rm -r --cached dist"
+    "build": "yarn run dev && git add -f dist && uploadStash=`git stash create` && git archive -o build/pickaxe-coinhive-miner-chrome.zip ${uploadStash} && git rm -r --cached dist"
   }
 }
